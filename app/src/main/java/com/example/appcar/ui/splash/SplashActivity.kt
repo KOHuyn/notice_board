@@ -8,13 +8,11 @@ import com.example.appcar.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
-    lateinit var viewModel : SplashViewModel
+    lateinit var viewModel: SplashViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        btn.setOnClickListener{
-            val intent : Intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        val intent: Intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -6,8 +6,13 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.2351851851851852" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.26944444444444443" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/layout/item_car_type.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_road_list.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/list_road_fragment.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/map_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/notice_board_fragment.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/road_fragment_page.xml" value="0.25833333333333336" />
       </map>
     </option>
   </component>

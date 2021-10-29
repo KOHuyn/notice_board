@@ -12,7 +12,6 @@ import com.example.appcar.data.model.Road
 import com.example.appcar.ui.adapter.ItemCarTypeAdapter
 import com.example.appcar.ui.adapter.ItemMapRoadAdapter
 import com.example.appcar.ui.base.BaseFragment
-import com.example.appcar.util.MyApplication
 import com.example.appcar.util.StartSnapHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -116,7 +115,7 @@ class MapFragment : BaseFragment(), OnMapReadyCallback {
 
 
     private fun onClickRoadItem(road: Road) {
-        val position = LatLng(road.start_lat, road.start_lng)
+        val position = LatLng(road.startLat, road.startLng)
         val markerOptions = MarkerOptions()
         markerOptions.position(position)
         googleMap.addMarker(markerOptions)

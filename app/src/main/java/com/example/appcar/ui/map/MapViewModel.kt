@@ -34,7 +34,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
                 "Nguyến Thái Học",
                 21.025126, 105.821595,
                 21.025126, 105.818816,
-                " Cấm 2 chieu vào các giờ",
+                " Cấm 2 chieu vào các giờ",1,
                 true
             )
         )
@@ -44,7 +44,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
                 "Nguyến Luong Banwgf",
                 21.025126, 105.818816,
                 21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",
+                " Cấm 2 chiêuv vào các giờ",1,
                 false
             )
         )
@@ -54,7 +54,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
                 "Nguyến Hello Học",
                 21.023371, 105.819691,
                 21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",
+                " Cấm 2 chiêuv vào các giờ",1,
                 false
             )
         )
@@ -64,7 +64,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
                 "Nguyến Thái Học",
                 21.022628, 105.8160545,
                 21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",
+                " Cấm 2 chiêuv vào các giờ",1,
                 false
             )
         )
@@ -74,7 +74,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
                 "Nguyến Thái Học",
                 21.021689, 105.815789,
                 21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",
+                " Cấm 2 chiêuv vào các giờ",1,
                 true
             )
         )

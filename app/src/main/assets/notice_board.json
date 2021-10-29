@@ -1,0 +1,335 @@
+{
+  "car_type" : [{
+    "description" : "Cấm xe taxi và các xe hợp đồng dưới 9 chỗ",
+    "id" : 1,
+    "name" : "Cấm xe taxi"
+  }, {
+    "description" : "Cấm xe tải hoạt động",
+    "id" : 2,
+    "name" : "Cấm xe tải"
+  } ],
+  "feed_back" : {
+    "h" : {
+      "content" : "hh",
+      "title" : "h"
+    },
+    "hhi" : {
+      "content" : "nhh",
+      "title" : "hhi"
+    },
+    "zzc" : {
+      "content" : "vvv",
+      "title" : "zzc"
+    }
+  },
+  "notice_board" : [{
+    "description" : "Đường cấm tất cả các loại phương tiện (cơ giới và thô sơ) đi lại cả hai hướng, trừ các xe được ưu tiên theo luật lệ nhà nước quy định.",
+    "id" : 1,
+    "id_ban" : "101",
+    "img_src" : "n_101.jpg",
+    "name" : "Đường cấm",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại xe cơ giới kể cả môtô 3 bánh có thùng xe rẽ trái, trừ môtô hai bánh, xe gắn máy và các xe được ưu tiên theo luật lệ nhà nước.",
+    "id" : 2,
+    "id_ban" : "103",
+    "img_src" : "n_103c.jpg",
+    "name" : "Cấm ô tô rẽ trái",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại xe (cơ giới và thô sơ) đi vào theo chiều đặt biển, trừ các xe được ưu tiên theo luật lệ nhà nước quy định.",
+    "id" : 3,
+    "id_ban" : "102",
+    "img_src" : "n_102.jpg",
+    "name" : "Cấm đi ngược chiều",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại xe cơ giới kể cả môtô 3 bánh có thùng đi qua, trừ môtô hai bánh, xe gắn máy và các xe được ưu tiên theo luật lệ nhà nước quy định.",
+    "id" : 4,
+    "id_ban" : "103a",
+    "img_src" : "n_103a.jpg",
+    "name" : "Cấm ôtô",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại môtô đi qua, trừ các xe môtô được ưu tiên theo luật lệ nhà nước quy định.",
+    "id" : 5,
+    "id_ban" : "104",
+    "img_src" : "n_104.jpg",
+    "name" : "Cấm môtô",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại xe cơ giới kể cả môtô 3 bánh có thùng xe rẽ phải, trừ môtô hai bánh, xe gắn máy và các xe được ưu tiên theo luật lệ nhà nước.",
+    "id" : 6,
+    "id_ban" : "103b",
+    "img_src" : "n_103b.jpg",
+    "name" : "Cấm ô tô rẽ phải",
+    "type_notice" : 1
+  }, {
+    "description" : "Đường cấm tất cả các loại xe cơ giới và môtô đi qua trừ xe gắn máy và các xe ưu tiên theo luật lệ nhà nước quy định.",
+    "id" : 7,
+    "id_ban" : "105",
+    "img_src" : "n_105.jpg",
+    "name" : "Cấm ôtô và môtô",
+    "type_notice" : 1
+  }, {
+    "description" : "Báo đường cấm tất cả các loại xe cơ giới kéo theo rơ-moóc kể cả môtô, máy kéo, ôtô khách kéo theo rơ-moóc đi qua, trừ loại ôtô sơ-mi rơ-moóc và các xe được ưu tiên (có kéo theo rơ-moóc) theo luật lệ nhà nước quy định.",
+    "id" : 8,
+    "id_ban" : "108",
+    "img_src" : "n_108.jpg",
+    "name" : "Cấm ôtô, máy kéo kéo moóc hoặc sơ mi rơ moóc",
+    "type_notice" : 1
+  }, {
+    "description" : "Để báo đường cấm tất cả các loại ôtô chở hàng có trọng tải từ 1,5 tấn trở lên trừ các xe được ưu tiên theo quy định, phải đặt biển số 106a. Biển có hiệu lực cấm đối với cả máy kéo và các xe máy chuyên dùng đi vào đoạn đường đặt biển",
+    "id" : 9,
+    "id_ban" : "106a",
+    "img_src" : "n_106a.jpg",
+    "name" : "Cấm ôtô tải",
+    "type_notice" : 1
+  }, {
+    "description" : "Nếu trên biển quy định trọng tải - trọng lượng xe cộng hàng (chữ số tấn ghi bằng màu trắng trên hình vẽ xe) thì chỉ cấm những ôtô có tổng trọng lượng (trọng lượng xe cộng hàng) vượt quá con số đã quy định trên biển phải đặt biển số 106b. Biển có hiệu lực cấm đối với cả máy kéo và các xe máy chuyên dùng đi vào đoạn đường đặt biển.",
+    "id" : 10,
+    "id_ban" : "106b",
+    "img_src" : "n_106b.jpg",
+    "name" : "Cấm ôtô tải",
+    "type_notice" : 1
+  }, {
+    "description" : "Để báo trước sắp đến một chỗ ngoặt nguy hiểm phải đặt biển số 201 (a,b): Biển số 201b chỗ ngoặt nguy hiểm vòng bên phải.Chỗ ngoặt nguy hiểm là vị trí đường cong như sau: Ở vùng đồng bằng, đường cong có góc ở tâm lớn hơn hay bằng 45° hoặc có bán kính nhỏ hơn hay bằng 100m; ở vùng núi, đường cong có góc ở tâm lớn hơn hay bằng 45°, hoặc có bán kính nhỏ hơn hay bằng 40m.",
+    "id" : 11,
+    "id_ban" : "201b",
+    "img_src" : "n_201b.jpg",
+    "name" : "Chỗ ngặt nguy hiểm",
+    "type_notice" : 4
+  }, {
+    "description" : "Để báo trước sắp đến một chỗ ngoặt nguy hiểm phải đặt biển số 201 (a,b): Biển số 201a chỗ ngoặt nguy hiểm vòng bên trái.",
+    "id" : 12,
+    "id_ban" : "201a",
+    "img_src" : "n_201a.jpg",
+    "name" : "Chỗ ngặt nguy hiểm",
+    "type_notice" : 4
+  }, {
+    "description" : "Biển số 202a đặt trong trường hợp có từ 2 chỗ ngoặt trở lên, ở gần nhau trong đó có ít nhất một chỗ ngoặt nguy hiểm mà chỗ ngoặt đầu tiên hướng vòng bên trái",
+    "id" : 13,
+    "id_ban" : "202a",
+    "img_src" : "n_202a.jpg",
+    "name" : "Nhiều chỗ ngoặt nguy hiểm liên tiếp",
+    "type_notice" : 4
+  }, {
+    "description" : "Biển số 202b đặt trong trường hợp như biển số 202a nhưng hướng vòng bên phải.",
+    "id" : 14,
+    "id_ban" : "202b",
+    "img_src" : "n_202b.jpg",
+    "name" : "Nhiều chỗ ngoặt nguy hiểm liên tiếp",
+    "type_notice" : 4
+  }, {
+    "description" : "Biển số 203a đặt trong trường hợp đường bị hẹp cả hai bên.",
+    "id" : 15,
+    "id_ban" : "203a",
+    "img_src" : "n_203a.jpg",
+    "name" : "Đường bị hẹp",
+    "type_notice" : 4
+  }, {
+    "description" : "Biển số 203b đặt trong trường hợp đường bị hẹp về phía trái.",
+    "id" : 16,
+    "id_ban" : "203b",
+    "img_src" : "n_203b.jpg",
+    "name" : "Đường bị hẹp",
+    "type_notice" : 4
+  }, {
+    "description" : "Để báo trước sắp đến nơi giao nhau cùng mức của các tuyến đường cùng cấp (không có đường nào ưu tiên) trên cùng một mặt bằng phải đặt biển số 205(a,b,c,d,e)",
+    "id" : 17,
+    "id_ban" : "205b",
+    "img_src" : "n_205b.jpg",
+    "name" : "Đường giao nhau",
+    "type_notice" : 4
+  }, {
+    "description" : "Để báo cho các loại xe (thô sơ và cơ giới) phải đi theo hướng quy định, phải đặt một trong những kiểu biển số 301 (a,b,c,d,e,f,h,i) . Tùy theo hướng đi mà chọn kiểu biển cho phù hợp. Biển có hiệu lực bắt buộc các loại xe phải đi theo hướng mũi tên chỉ (trừ xe được quyền ưu tiên theo quy định). Biển số 301a: các xe chỉ được đi thẳng.",
+    "id" : 18,
+    "id_ban" : "301a",
+    "img_src" : "n_301a.jpg",
+    "name" : "Hướng đi phải theo",
+    "type_notice" : 2
+  }, {
+    "description" : "Để báo cho các loại xe (thô sơ và cơ giới) phải đi theo hướng quy định, phải đặt một trong những kiểu biển số 301 (a,b,c,d,e,f,h,i) . Tùy theo hướng đi mà chọn kiểu biển cho phù hợp. Biển có hiệu lực bắt buộc các loại xe phải đi theo hướng mũi tên chỉ (trừ xe được quyền ưu tiên theo quy định). Biển số 301b: các xe chỉ được rẽ phải.",
+    "id" : 19,
+    "id_ban" : "301b",
+    "img_src" : "n_301b.jpg",
+    "name" : "Hướng đi phải theo",
+    "type_notice" : 2
+  }, {
+    "description" : "Để báo cho các loại xe (thô sơ và cơ giới) phải đi theo hướng quy định, phải đặt một trong những kiểu biển số 301 (a,b,c,d,e,f,h,i) . Tùy theo hướng đi mà chọn kiểu biển cho phù hợp. Biển có hiệu lực bắt buộc các loại xe phải đi theo hướng mũi tên chỉ (trừ xe được quyền ưu tiên theo quy định). Biển số 301c: các xe chỉ được rẽ trái.",
+    "id" : 20,
+    "id_ban" : "301c",
+    "img_src" : "n_301c.jpg",
+    "name" : "Hướng đi phải theo",
+    "type_notice" : 2
+  }, {
+    "description" : "Để biểu thị ưu tiên cho các phương tiện trên đường có đặt biển này được đi trước phải đặt biển số 401 “Bắt đầu đường ưu tiên”. Biển đặt tại vị trí thích hợp trước khi đường nhánh sắp nhập vào trục đường chính, yêu cầu phương tiện từ đường nhánh ra phải dừng lại nhường cho phương tiện trên đường chính đi trước.",
+    "id" : 21,
+    "id_ban" : "401",
+    "img_src" : "n_401.jpg",
+    "name" : "Bắt đầu đường ưu tiên",
+    "type_notice" : 3
+  }, {
+    "description" : "Đến hết đoạn đường quy định là ưu tiên phải đặt biển số 402.",
+    "id" : 22,
+    "id_ban" : "402",
+    "img_src" : "n_402.jpg",
+    "name" : "Hết đoạn đường ưu tiên",
+    "type_notice" : 3
+  }, {
+    "description" : "Đến hết đoạn đường dành cho ôtô đi lại phải đặt biển số 404a",
+    "id" : 23,
+    "id_ban" : "404a",
+    "img_src" : "n_404a.jpg",
+    "name" : "Hết đường dành cho ôtô",
+    "type_notice" : 3
+  }, {
+    "description" : "Để chỉ dẫn bắt đầu đường dành cho các loại ôtô đi lại, phải đặt biển số 403a.",
+    "id" : 24,
+    "id_ban" : "403a",
+    "img_src" : "n_403a.jpg",
+    "name" : "Đường dành cho ôtô",
+    "type_notice" : 3
+  }, {
+    "description" : "Đến hết đoạn đường dành cho ôtô, xe máy đi lại phải đặt biển số 404b.",
+    "id" : 25,
+    "id_ban" : "404b",
+    "img_src" : "n_404b.jpg",
+    "name" : "Hết đường dành cho ôtô, xe máy",
+    "type_notice" : 3
+  }, {
+    "description" : "Để chỉ dẫn bắt đầu đường dành cho các loại ôtô, xe máy (kể cả xe gắn máy) đi lại phải đặt biển số 403b.",
+    "id" : 26,
+    "id_ban" : "403b",
+    "img_src" : "n_403b.jpg",
+    "name" : "Đường dành cho ôtô, xe máy",
+    "type_notice" : 3
+  } ],
+  "road" : [{
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động",
+    "end_lat" : 21.023397,
+    "end_lng" : 105.819897,
+    "id" : 1,
+    "name" : "Giảng Võ",
+    "start_lat" : 21.032086,
+    "start_lng" : 105.829935,
+    "type" : 1
+  }, {
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động",
+    "end_lat" : 21.010942,
+    "end_lng" : 105.81093,
+    "id" : 2,
+    "name" : "Láng Hạ",
+    "start_lat" : 21.02343,
+    "start_lng" : 105.819767,
+    "type" : 1
+  }, {
+    "description" : "Cấm một chiều đi từ phía Lăng Bác",
+    "end_lat" : 21.037014,
+    "end_lng" : 105.815191,
+    "id" : 3,
+    "name" : "Đội cấn",
+    "start_lat" : 21.03443,
+    "start_lng" : 105.831639,
+    "type" : 2
+  }, {
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động",
+    "end_lat" : 21.019815,
+    "end_lng" : 105.851917,
+    "id" : 4,
+    "name" : "Hàng Bài",
+    "start_lat" : 21.025357,
+    "start_lng" : 105.853192,
+    "type" : 1
+  }, {
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động",
+    "end_lat" : 21.027111,
+    "end_lng" : 105.84775,
+    "id" : 5,
+    "name" : "Phủ Doãn",
+    "start_lat" : 21.030401,
+    "start_lng" : 105.847478,
+    "type" : 1
+  }, {
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động",
+    "end_lat" : 20.999651,
+    "end_lng" : 105.797565,
+    "id" : 6,
+    "name" : "Lê Văn Lương",
+    "start_lat" : 21.010209,
+    "start_lng" : 105.810532,
+    "type" : 1
+  }, {
+    "description" : "Cấm xe taxi và xe hợp đồng dưới 9 chỗ hoạt động, chiều từ đường Trần Khánh Dư đến đường Trần Thánh Tông từ 6h - 19h",
+    "end_lat" : 21.018995,
+    "end_lng" : 105.858869,
+    "id" : 7,
+    "name" : "Trần Hưng Đạo",
+    "start_lat" : 21.018494,
+    "start_lng" : 105.861704,
+    "type" : 1
+  }, {
+    "description" : "đoạn từ ngã ba Hồng Tiến - Nguyễn Văn Cừ đến cầu Chương Dương và trên cầu Chương Dương theo chiều từ Long Biên đi Hoàn Kiếm vào giờ cao điểm sáng 6h - 9h)",
+    "end_lat" : 21.03581,
+    "end_lng" : 105.854725,
+    "id" : 8,
+    "name" : "Nguyễn Văn Cừ",
+    "start_lat" : 21.043902,
+    "start_lng" : 105.872254,
+    "type" : 1
+  }, {
+    "description" : "Cấm xe tải theo các khung giờ quy định",
+    "end_lat" : 21.014703,
+    "end_lng" : 105.858971,
+    "id" : 9,
+    "name" : "Nguyễn Công Trứ",
+    "start_lat" : 21.013594,
+    "start_lng" : 105.851765,
+    "type" : 2
+  }, {
+    "description" : "Cấm xe tải đoạn từ Minh Khai đến Nguyễn Tam Trinh",
+    "end_lat" : 20.996028,
+    "end_lng" : 105.861669,
+    "id" : 10,
+    "name" : "Minh Khai",
+    "start_lat" : 20.995816,
+    "start_lng" : 105.849927,
+    "type" : 2
+  }, {
+    "description" : "Cấm chiều từ ngã ba Bưởi ra đường Thanh Niên",
+    "end_lat" : 21.04273,
+    "end_lng" : 105.83577,
+    "id" : 11,
+    "name" : "Thụy Khuê",
+    "start_lat" : 21.048614,
+    "start_lng" : 105.806553,
+    "type" : 2
+  }, {
+    "description" : "Cấm chiều ngược lại từ Trần Khánh Dư vào",
+    "end_lat" : 21.01353,
+    "end_lng" : 105.860185,
+    "id" : 12,
+    "name" : "Lê Quý Đôn",
+    "start_lat" : 21.01346,
+    "start_lng" : 105.86296,
+    "type" : 2
+  }, {
+    "description" : "Cấm rẽ trái từ Láng Hạ vào",
+    "end_lat" : 21.015145,
+    "end_lng" : 105.809238,
+    "id" : 13,
+    "name" : "Vũ Ngọc Phan",
+    "start_lat" : 21.0132,
+    "start_lng" : 105.812546,
+    "type" : 2
+  }, {
+    "description" : "Cấm từ cầu Lạc Trung đến Bạch Mai",
+    "end_lat" : 21.0032128,
+    "end_lng" : 105.8511493,
+    "id" : 14,
+    "name" : "Thanh Nhàn",
+    "start_lat" : 21.003016,
+    "start_lng" : 105.861293,
+    "type" : 2
+  } ]
+}
