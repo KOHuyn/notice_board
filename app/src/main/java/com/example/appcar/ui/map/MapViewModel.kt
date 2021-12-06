@@ -1,145 +1,65 @@
 package com.example.appcar.ui.map
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.appcar.data.model.CarType
+import androidx.lifecycle.*
 import com.example.appcar.data.model.Road
-import java.util.ArrayList
-import com.google.android.gms.maps.model.LatLng
+import com.example.appcar.data.repository.CarTypeRepository
+import com.example.appcar.data.repository.RoadRepository
+import com.example.appcar.util.BaseResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.*
-import java.lang.Exception
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MapViewModel @Inject constructor() : ViewModel() {
-    @Inject
-    lateinit var repository: MapRepository
+class MapViewModel @Inject constructor(
+    private val roadRepository: RoadRepository,
+    private val carTypeRepository: CarTypeRepository
+) : ViewModel() {
 
-    private val viewModelCoroutineScope = CoroutineScope(Dispatchers.IO)
-
-    private val _allData = MutableLiveData<List<Road>>()
-    val allData: MutableLiveData<List<Road>> get() = _allData
-
-    private val _listCarType = MutableLiveData<List<CarType>>()
-    val listCarType: MutableLiveData<List<CarType>> get() = _listCarType
-
-    private var listChoose = ArrayList<Int>()
-    fun insertAll() {
-        val lisRoad = ArrayList<Road>()
-        lisRoad.add(
-            Road(
-                1,
-                "Nguyến Thái Học",
-                21.025126, 105.821595,
-                21.025126, 105.818816,
-                " Cấm 2 chieu vào các giờ",1,
-                true
-            )
-        )
-        lisRoad.add(
-            Road(
-                2,
-                "Nguyến Luong Banwgf",
-                21.025126, 105.818816,
-                21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",1,
-                false
-            )
-        )
-        lisRoad.add(
-            Road(
-                3,
-                "Nguyến Hello Học",
-                21.023371, 105.819691,
-                21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",1,
-                false
-            )
-        )
-        lisRoad.add(
-            Road(
-                4,
-                "Nguyến Thái Học",
-                21.022628, 105.8160545,
-                21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",1,
-                false
-            )
-        )
-        lisRoad.add(
-            Road(
-                5,
-                "Nguyến Thái Học",
-                21.021689, 105.815789,
-                21.025126, 105.818816,
-                " Cấm 2 chiêuv vào các giờ",1,
-                true
-            )
-        )
-        viewModelCoroutineScope.launch {
-            repository.insertAll(lisRoad)
-        }
-    }
-
-    fun insertCarType() {
-        val listCar = ArrayList<CarType>()
-        listCar.add(
-            CarType(1, "Xe con"),
-        )
-        listCar.add(
-            CarType(2, "Xe taxi"),
-        )
-        listCar.add(
-            CarType(3, "Xe tải"),
-        )
-        viewModelCoroutineScope.launch {
-            repository.insertCarType(listCar)
-        }
-    }
-
-    fun getAllCarType() {
-        viewModelCoroutineScope.launch {
-            try {
-                _listCarType.postValue(repository.getAllTypeCar())
-            } catch (e: Exception) {
-
+    init {
+        viewModelScope.launch {
+            if (roadRepository.isDbEmpty() || carTypeRepository.isDbEmpty()) {
+                retryAll()
             }
         }
     }
 
-    fun changeChoose(id: Int){
-        if (listChoose.contains(id)){
-                listChoose.remove(id)
-        }
-        else{
-            listChoose.add(id)
-        }
+    val arrCarType = carTypeRepository.getAllCarType()
 
+    fun retryAll() {
+        _stateRoad.value = Unit
     }
 
-    fun getAllRoad() {
-        viewModelCoroutineScope.launch {
-            try {
+    private val _stateRoad = MutableLiveData<Unit>()
 
-                val listIdCar = async { repository.getIdList(listChoose) }
-                _allData.postValue(repository.findListCar(listIdCar.await()))
-            } catch (e: Exception) {
+    val stateData: LiveData<BaseResponse<Any>> = _stateRoad.switchMap {
+        viewModelScope.launch {
+            carTypeRepository.getAllFromFirebase().collect()
+        }
+        roadRepository.updateRoadFromApi(false).asLiveData()
+    }
 
-            }
+    private val _stateFilterRoad =
+        MutableLiveData<Pair<List<Int>, String?>>()
+
+    fun searchRoad(types: List<Int>, search: String?) {
+        Timber.e("SEARCH : ${types.joinToString(",")} AND $search")
+        _stateFilterRoad.value = (types to search)
+    }
+
+    fun favRoad(road: Road) {
+        viewModelScope.launch {
+            roadRepository.updateRoad(road)
         }
     }
 
-    // love road, change favorite
-    fun loveRoad(road: Road) {
-        road.isFavorite = !road.isFavorite
-        viewModelCoroutineScope.launch {
-            try {
-                repository.updateRoad(road)
-            } catch (e: Exception) {
-
-            }
-        }
+    val allRoadByFilter = _stateFilterRoad.switchMap { (type, search) ->
+        Timber.e("[###] types -> ${type.joinToString(",")}")
+        roadRepository.searchRoad(type, search).asLiveData()
     }
 }

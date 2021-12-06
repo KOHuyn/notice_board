@@ -19,13 +19,13 @@
         android:id="@+id/feedBackFragment"
         android:name="com.example.appcar.ui.feedback.FeedBackFragment"
         android:label="feed_back_fragment"
-        tools:layout="@layout/feed_back_fragment" />
+        tools:layout="@layout/fragment_feedback" />
 
     <fragment
         android:id="@+id/noticeBoardFragment"
-        android:name="com.example.appcar.ui.ban.NoticeBoardFragment"
+        android:name="com.example.appcar.ui.notice.NoticeBoardFragment"
         android:label="notice_board_fragment"
-        tools:layout="@layout/notice_board_fragment" >
+        tools:layout="@layout/fragment_notice_board" >
         <action
             android:id="@+id/action_noticeBoardFragment_to_feedBackFragment"
             app:destination="@id/feedBackFragment" />
@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/listRoadFragment"
-        android:name="com.example.appcar.ui.list.ListRoadFragment"
+        android:name="com.example.appcar.ui.road.ListRoadFragment"
         android:label="list_road_fragment"
         tools:layout="@layout/list_road_fragment" >
         <action

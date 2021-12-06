@@ -5,32 +5,28 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Query
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.database.PropertyName
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Road(
-    @Expose
-    @PrimaryKey val id: Int,
-    @Expose
-    var name: String,
-    @Expose
-    @SerializedName("start_lat")
-    var startLat: Double,
-    @Expose
-    @SerializedName("start_lng")
-    var startLng: Double,
-    @Expose
-    @SerializedName("end_lat")
-    var endLat: Double,
-    @Expose
-    @SerializedName("end_lng")
-    var endLng: Double,
-    @Expose
-    var description: String,
-    @Expose
-    var type: Int,
-    @Expose
-    @SerializedName("is_favourite")
-    @ColumnInfo(name = "is_favourite") var isFavorite: Boolean
-)
+    @PrimaryKey val id: Int = -1,
+    var name: String = "",
+    @get:PropertyName("start_lat")
+    @set:PropertyName("start_lat")
+    var startLat: Double = 0.0,
+    @get:PropertyName("start_lng")
+    @set:PropertyName("start_lng")
+    var startLng: Double = 0.0,
+    @get:PropertyName("end_lat")
+    @set:PropertyName("end_lat")
+    var endLat: Double = 0.0,
+    @get:PropertyName("end_lng")
+    @set:PropertyName("end_lng")
+    var endLng: Double = 0.0,
+    var description: String = "",
+    var type: Int = 0,
+    @ColumnInfo(name = "is_favourite") var isFavorite: Boolean = false
+) {
+}

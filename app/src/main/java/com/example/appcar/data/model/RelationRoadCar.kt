@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class RelationRoadCar (
+data class RelationRoadCar(
     @PrimaryKey
-    val id : Int,
-    @ColumnInfo(name = "car_type_id") val carTypeId : Int,
+    val id: Int,
+    @ColumnInfo(name = "car_type_id") val carTypeId: Int,
     @ColumnInfo(name = "road_id") val roadId: Int
-    )
+)

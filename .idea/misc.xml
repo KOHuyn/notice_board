@@ -5,18 +5,37 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.2351851851851852" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.26944444444444443" />
+        <entry key="app/src/main/res/drawable/background_search_box.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/bg_bottom.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/bg_icon_type_selected.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/bg_icon_type_unselected.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/cb_favorite.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/ic__favorite_24_unselect.xml" value="0.21574074074074073" />
+        <entry key="app/src/main/res/drawable/ic_clear_24.xml" value="0.2490740740740741" />
+        <entry key="app/src/main/res/drawable/ic_search_24.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/feed_back_fragment.xml" value="0.25435897435897437" />
+        <entry key="app/src/main/res/layout/fragment_feedback.xml" value="0.10169551467243018" />
+        <entry key="app/src/main/res/layout/fragment_notice_board.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/fragment_notice_board_pager.xml" value="0.19240816170550462" />
         <entry key="app/src/main/res/layout/item_car_type.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_road_list.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/item_header.xml" value="0.25435897435897437" />
+        <entry key="app/src/main/res/layout/item_load_state.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/item_map_info.xml" value="0.25435897435897437" />
+        <entry key="app/src/main/res/layout/item_notice.xml" value="0.17560658132235213" />
+        <entry key="app/src/main/res/layout/item_notice_board.xml" value="0.25435897435897437" />
+        <entry key="app/src/main/res/layout/item_road_list.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/layout_loading.xml" value="0.25435897435897437" />
         <entry key="app/src/main/res/layout/list_road_fragment.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/map_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/notice_board_fragment.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/layout/road_fragment_page.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/layout/road_fragment_pager.xml" value="0.25833333333333336" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

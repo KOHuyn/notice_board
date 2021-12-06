@@ -1,18 +1,26 @@
 package com.example.appcar.ui.map
 
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import android.view.inputmethod.InputMethodManager
+import androidx.core.app.ActivityCompat
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.example.appcar.R
-import com.example.appcar.data.model.CarType
 import com.example.appcar.data.model.Road
-import com.example.appcar.ui.adapter.ItemCarTypeAdapter
-import com.example.appcar.ui.adapter.ItemMapRoadAdapter
+import com.example.appcar.databinding.MapFragmentBinding
+import com.example.appcar.ui.map.adapter.ItemCarTypeAdapter
+import com.example.appcar.ui.map.adapter.ItemMapRoadAdapter
 import com.example.appcar.ui.base.BaseFragment
-import com.example.appcar.util.StartSnapHelper
+import com.example.appcar.util.LoadStateBuilder
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,120 +28,122 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.map_fragment.*
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment(), OnMapReadyCallback {
-
-    private var listRoadContent = ArrayList<Road>()
-    private var listCarType = ArrayList<CarType>()
-    private var roadAdapter: ItemMapRoadAdapter? = null
-    private var carTypeAdapter: ItemCarTypeAdapter? = null
+    private val roadAdapter by lazy { ItemMapRoadAdapter() }
+    private val carTypeAdapter by lazy { ItemCarTypeAdapter() }
 
     private lateinit var googleMap: GoogleMap
+
+    private lateinit var binding: MapFragmentBinding
+    private lateinit var stateHandle: LoadStateBuilder
 
     companion object {
         fun newInstance() = MapFragment()
     }
 
-    private lateinit var viewModel: MapViewModel
+    private val vm: MapViewModel by viewModels()
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.getAllRoad()
-        viewModel.getAllCarType()
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.map_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
+        binding = MapFragmentBinding.inflate(inflater)
+        stateHandle = LoadStateBuilder(binding.loadState).setOnRetryClickListener { vm.retryAll() }
         val supportMapFragment =
             childFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
         supportMapFragment.getMapAsync(this)
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpObservers()
         setUpViews()
+        handleClick()
+        observerViewModel()
     }
 
     private fun setUpViews() {
+        binding.rlvListRoad.adapter = roadAdapter
+        val startSnapHelper: SnapHelper = PagerSnapHelper()
+        startSnapHelper.attachToRecyclerView(binding.rlvListRoad)
+        binding.rlvListType.adapter = carTypeAdapter
+    }
 
-        roadAdapter = ItemMapRoadAdapter(ItemMapRoadAdapter.VIEW_TYPE_MAP,listRoadContent,
-            {
-                onClickRoadItem(it)
-            },
-            {
-
-                onClickLoveRoadItem(it)
-            })
-        rlvListRoad.adapter = roadAdapter
-        val startSnapHelper: SnapHelper = StartSnapHelper()
-        startSnapHelper.attachToRecyclerView(rlvListRoad)
-
-        carTypeAdapter = ItemCarTypeAdapter(listCarType) {
-            chooseTypeListener(it)
+    private fun handleClick() {
+        roadAdapter.setOnItemClickListener {
+            onClickRoadItem(it)
         }
-        rlvListType.adapter = carTypeAdapter
 
+        binding.btnSearch.setOnClickListener {
+            search()
+        }
+        binding.btnClearSearch.setOnClickListener {
+            binding.edtSearch.editableText.clear()
+            binding.edtSearch.clearFocus()
+            val imm =
+                activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(it.windowToken, 0)
+            search()
+        }
 
+        carTypeAdapter.setOnCarTypeChangeListener {
+            search()
+        }
+
+        roadAdapter.setOnItemFavoriteListener {
+            vm.favRoad(it)
+        }
+
+        binding.edtSearch.doOnTextChanged { text, start, before, count ->
+            binding.btnSearch.alpha = if (text.isNullOrBlank()) 0.5F else 1F
+            binding.btnSearch.isEnabled = text?.isNotBlank() ?: false
+        }
     }
 
-
-    private fun chooseTypeListener(id: Int){
-        viewModel.changeChoose(id)
+    private fun search() {
+        var search: String? = binding.edtSearch.text?.toString()
+        if (search.isNullOrBlank()) {
+            search = null
+        }
+        vm.searchRoad(carTypeAdapter.arrTypeSelected, search)
     }
 
-    private fun setUpObservers() {
-
-        viewModel.allData.observe(
-            viewLifecycleOwner,
-            {
-                listRoadContent = it as ArrayList<Road>
-                roadAdapter?.updateList(listRoadContent)
-
+    private fun observerViewModel() {
+        lifecycleScope.launchWhenCreated {
+            vm.arrCarType.collect {
+                carTypeAdapter.submitList(it)
             }
-        )
-
-        viewModel.listCarType.observe(
-            viewLifecycleOwner,
-            {
-                listCarType = it as ArrayList<CarType>
-                carTypeAdapter?.updateList(listCarType)
-            }
-        )
+        }
+        vm.allRoadByFilter.observe(viewLifecycleOwner) {
+            roadAdapter.submitList(it)
+        }
+        vm.stateData.observe(viewLifecycleOwner) {
+            stateHandle.setState(it)
+        }
     }
-
-    private fun onClickLoveRoadItem(road: Road) {
-        viewModel.loveRoad(road)
-        roadAdapter?.notifyItemChanged(listRoadContent.indexOf(road))
-    }
-
 
     private fun onClickRoadItem(road: Road) {
         val position = LatLng(road.startLat, road.startLng)
         val markerOptions = MarkerOptions()
         markerOptions.position(position)
+        markerOptions.title(road.name)
         googleMap.addMarker(markerOptions)
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 10f))
-
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15F))
     }
 
-    override fun onMapReady(it: GoogleMap?) {
-        if (it != null) {
-            googleMap = it
-        }
-        it?.setOnMapClickListener { latLng ->
-            val markerOption = MarkerOptions()
-            markerOption.position(latLng)
-            markerOption.title(latLng.latitude.toString() + " : " + latLng.longitude.toString())
-            it.addMarker(markerOption)
-            it.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10F))
-        }
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+
+        googleMap.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    21.022736, 105.8019441
+                ), 15F
+            )
+        )
     }
 
 }

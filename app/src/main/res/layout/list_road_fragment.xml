@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.list.ListRoadFragment">
+    tools:context=".ui.road.ListRoadFragment">
 
     <ImageView
         android:id="@+id/header"
@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="DANH SÁCH ĐƯỜNG CẤM"
+        android:text="Danh sách đường cấm"
+        android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"

@@ -1,51 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tool="http://schemas.android.com/tools"
-
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@color/bgBottomNavigation"
-    android:orientation="vertical"
-    android:paddingVertical="10dp">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/titleItemMap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:gravity="center_horizontal"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            tool:text="Nguyễn Lương Bằng" />
-
-        <ImageView
-            android:id="@+id/iconFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic__favorite_24_unselect" />
-    </FrameLayout>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="8dp">
 
     <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.5"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleItemMap"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nguyễn Lương Bằng" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/cb_favorite"
+        app:layout_constraintBottom_toBottomOf="@id/titleItemMap"
+        app:layout_constraintEnd_toEndOf="@id/titleItemMap"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@id/titleItemMap"
+        app:layout_constraintTop_toTopOf="@id/titleItemMap" />
+
+    <View
+        android:id="@+id/viewLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginVertical="5dp"
-        android:background="#fff" />
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@id/titleItemMap" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/descriptionItemMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Cấm từ chiều ra vào vào giờ cao điểmdddddddddddddddddddddddddddddddddddddddddddddddddđ."
-        android:textColor="#fff" />
-
-
-</LinearLayout>
+        tools:text="Cấm từ chiều ra vào vào giờ cao điểmdddddddddddddddddddddddddddddddddddddddddddddddddđ."
+        android:textColor="#fff"
+        app:layout_constraintTop_toBottomOf="@id/viewLine" />
+</androidx.constraintlayout.widget.ConstraintLayout>
